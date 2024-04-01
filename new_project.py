@@ -1,4 +1,4 @@
-#%%capture
+#imports
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -22,7 +22,7 @@ except AttributeError:
 else:
     ssl._create_default_https_context = _create_unverified_https_context
 
-nltk.download('stopwords')
+#nltk.download('stopwords')
 warnings.filterwarnings('ignore')
 
 df = pd.read_csv('/Users/sofiautoft/research/Recommender_System_TedTalks/tedx_dataset-master/tedx_dataset.csv')
@@ -36,6 +36,9 @@ df['year'] = splitted[2].astype('int')
 df['month'] = splitted[1]
 
 df['year'].value_counts().plot.bar()
+plt.title("Number of Ted Talks per Year")
+plt.xlabel("Years")
+plt.ylabel("Count")
 plt.show()
 
 # Let's combine the title and the details of the talk.
@@ -86,10 +89,11 @@ wc = WordCloud(max_words=1000,
 			width=800,
 			height=400).generate(details_corpus)
 plt.axis('off')
+plt.title("Word Cloud of Most Frequent Words")
 plt.imshow(wc)
 plt.show()
 
-#%%capture
+#capture similarities
 vectorizer = TfidfVectorizer(analyzer = 'word')
 vectorizer.fit(df['details'])
 
