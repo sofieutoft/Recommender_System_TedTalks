@@ -14,7 +14,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 import nltk
 import ssl
-
+# creates an SSL context without verifying the authenticity of certificates.
 try:
     _create_unverified_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -138,4 +138,5 @@ talk_content = ['Time Management and working\
 hard to become successful in life']
 recommend_talks(talk_content)
 
-
+talk_content = ["Why I photograph the quiet moments of grief and loss"]
+recommend_talks(talk_content)
